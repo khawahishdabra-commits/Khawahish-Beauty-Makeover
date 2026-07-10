@@ -1,0 +1,146 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 20px;
+  color: white;
+}
+
+.hero-content {
+  max-width: 800px;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.welcome {
+  color: #f8d7da;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-size: 68px;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.hero h2 {
+  font-size: 30px;
+  color: #f8d7da;
+  margin-bottom: 25px;
+  font-weight: 400;
+}
+
+.description {
+  font-size: 20px;
+  color: #ffffff;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.book-btn,
+.service-btn {
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.book-btn {
+  background: #b76e79;
+  color: white;
+}
+
+.book-btn:hover {
+  background: #9f5c66;
+  transform: translateY(-3px);
+}
+
+.service-btn {
+  border: 2px solid white;
+  color: white;
+  background: transparent;
+}
+
+.service-btn:hover {
+  background: white;
+  color: #b76e79;
+  transform: translateY(-3px);
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 52px;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 20px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .hero h2 {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-btn,
+  .service-btn {
+    width: 220px;
+    text-align: center;
+  }
+}

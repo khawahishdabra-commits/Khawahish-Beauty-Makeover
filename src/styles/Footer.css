@@ -1,0 +1,41 @@
+.footer {
+  background: #1f1f1f;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.footer h2 {
+  color: #b76e79;
+  margin-bottom: 15px;
+  font-family: "Playfair Display", serif;
+}
+
+.footer p {
+  color: #ddd;
+  margin: 10px 0;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 25px 0;
+}
+
+.footer-icons a {
+  color: white;
+  font-size: 28px;
+  transition: 0.3s;
+}
+
+.footer-icons a:hover {
+  color: #b76e79;
+  transform: scale(1.15);
+}
+
+.copyright {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #aaa;
+}
