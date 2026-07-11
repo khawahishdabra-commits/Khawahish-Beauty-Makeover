@@ -3,7 +3,7 @@ import services from "../../data/services";
 
 function Services() {
   return (
-    <section className="services" id="services" data-aos="fade-left">
+    <section className="services" id="services" data-aos="zoom-in">
       <div className="container">
         <h2 className="section-title">Our Services</h2>
 

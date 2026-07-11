@@ -9,7 +9,7 @@ import {
 
 function Contact() {
   return (
-    <section className="contact" id="contact" data-aos="fade-left">
+    <section className="contact" id="contact" data-aos="fade-up">
       <div className="container">
         <h2 className="section-title">Contact Us</h2>
 

@@ -2,7 +2,7 @@ import "../../styles/About.css";
 
 function About() {
   return (
-    <section className="about" id="about" data-aos="fade-up">
+    <section className="about" id="about" data-aos="fade-right">
       <div className="about-container">
         <div className="about-content">
           <h2>About Us</h2>

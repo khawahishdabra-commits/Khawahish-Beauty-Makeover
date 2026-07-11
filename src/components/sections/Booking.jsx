@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../../styles/Booking.css";
 
 function Booking() {
-  const [form, setForm] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     phone: "",
     service: "",
@@ -11,96 +11,100 @@ function Booking() {
   });
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
+    setFormData({
+      ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleBooking = () => {
-    const text = `Hello Khawahish Beauty Makeover,
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-Name: ${form.name}
-Phone: ${form.phone}
-Service: ${form.service}
-Preferred Date: ${form.date}
+    const whatsappNumber = "919306366233"; // Mrs. Reena's WhatsApp number
 
-Message:
-${form.message}`;
+    const whatsappMessage = `Hello Khawahish Beauty Makeover,
 
-    window.open(
-      `https://wa.me/919306366233?text=${encodeURIComponent(text)}`,
-      "_blank"
-    );
+I would like to book an appointment.
+
+👤 Name: ${formData.name}
+
+📱 Phone: ${formData.phone}
+
+💄 Service: ${formData.service}
+
+📅 Preferred Date: ${formData.date}
+
+💬 Message:
+${formData.message}`;
+
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
+
+    window.open(url, "_blank");
   };
 
   return (
-    <section className="booking" id="booking" data-aos="fade-right">
+    <section className="booking" id="booking" data-aos="zoom-in-up">
       <div className="container">
-
-        <h2 className="section-title">
-          Book Your Appointment
-        </h2>
+        <h2 className="section-title">Book Your Appointment</h2>
 
         <p className="section-subtitle">
-          Fill in your details and we'll connect with you on WhatsApp.
+          We'd love to make you look your best. Fill out the form below and
+          we'll contact you through WhatsApp.
         </p>
 
-        <div className="booking-form">
-
+        <form className="booking-form" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Your Name"
             name="name"
-            value={form.name}
+            placeholder="Full Name"
+            value={formData.name}
             onChange={handleChange}
+            required
           />
 
           <input
             type="tel"
-            placeholder="Phone Number"
             name="phone"
-            value={form.phone}
+            placeholder="Phone Number"
+            value={formData.phone}
             onChange={handleChange}
+            required
           />
 
           <select
             name="service"
-            value={form.service}
+            value={formData.service}
             onChange={handleChange}
+            required
           >
-            <option value="">Select Service</option>
-            <option>Bridal Makeup</option>
-            <option>Party Makeup</option>
-            <option>Hair Styling</option>
-            <option>Hair Spa</option>
-            <option>Facial</option>
-            <option>Mehndi</option>
-            <option>Nail Art</option>
-            <option>Skin Care</option>
+            <option value="">Select a Service</option>
+            <option value="Bridal Makeup">Bridal Makeup</option>
+            <option value="Party Makeup">Party Makeup</option>
+            <option value="Hair Styling">Hair Styling</option>
+            <option value="Mehndi">Mehndi</option>
+            <option value="Nail Art">Nail Art</option>
           </select>
 
           <input
             type="date"
             name="date"
-            value={form.date}
+            value={formData.date}
             onChange={handleChange}
+            required
           />
 
           <textarea
-            rows="5"
-            placeholder="Additional Message"
             name="message"
-            value={form.message}
+            rows="5"
+            placeholder="Tell us about your requirements..."
+            value={formData.message}
             onChange={handleChange}
           ></textarea>
 
-          <button onClick={handleBooking}>
-            Book on WhatsApp
-          </button>
-
-        </div>
-
+          <button type="submit">Book on WhatsApp</button>
+        </form>
       </div>
     </section>
   );

@@ -1,82 +1,129 @@
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-
+import logo from "../../assets/images/logo/logo.png";
 import "../../styles/Navbar.css";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+  const sections = document.querySelectorAll("section");
 
-    window.addEventListener("scroll", handleScroll);
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY + 120;
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    sections.forEach((section) => {
+      if (
+        scrollPosition >= section.offsetTop &&
+        scrollPosition < section.offsetTop + section.offsetHeight
+      ) {
+        setActiveSection(section.getAttribute("id"));
+      }
+    });
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  handleScroll();
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
 
 
   return (
-    <header className={scrolled ? "navbar scrolled" : "navbar"}>
-      <div className="logo">
-        <span>Khawahish</span> Beauty Makeover
-      </div>
+    <header className="navbar">
+      <div className="container navbar-container">
+        
+        {/* Logo */}
+        <a href="#home" className="logo" onClick={closeMenu}>
+          <img
+            src={logo}
+            alt="Khawahish Beauty Makeover"
+            className="logo-img"
+          />
 
-      {/* Mobile Menu Button */}
-      <div
-        className="menu-icon"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {menuOpen ? <FaTimes /> : <FaBars />}
-      </div>
-
-      <nav className={menuOpen ? "nav active" : "nav"}>
-        <ul className="nav-links">
-          <li>
-            <a href="#home" onClick={() => setMenuOpen(false)}>
-              Home
-            </a>
-          </li>
-
-          <li>
-            <a href="#about" onClick={() => setMenuOpen(false)}>
-              About
-            </a>
-          </li>
-
-          <li>
-            <a href="#services" onClick={() => setMenuOpen(false)}>
-              Services
-            </a>
-          </li>
-
-          <li>
-            <a href="#gallery" onClick={() => setMenuOpen(false)}>
-              Gallery
-            </a>
-          </li>
-
-          <li>
-            <a href="#contact" onClick={() => setMenuOpen(false)}>
-              Contact
-            </a>
-          </li>
-        </ul>
-
-        <a
-          href="https://wa.me/919306366233?text=Hello%20Mrs.%20Reena,%20I%20would%20like%20to%20book%20an%20appointment."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="book-now"
-          onClick={() => setMenuOpen(false)}
-        >
-          Book Now
+          <div className="logo-text">
+            <h2>Khawahish</h2>
+            <span>Beauty Makeover</span>
+          </div>
         </a>
-      </nav>
+
+        {/* Navigation */}
+        <nav className={menuOpen ? "nav-menu active" : "nav-menu"}>
+          <a 
+           href="#home" 
+           onClick={closeMenu}
+           className={activeSection === "home" ? "active" : ""}
+          >
+            Home
+          </a>
+
+          <a 
+           href="#about" 
+           onClick={closeMenu}
+           className={activeSection === "about" ? "active" :""}
+           >
+            About
+          </a>
+
+          <a
+           href="#services"
+           onClick={closeMenu}
+           className={activeSection === "services" ? "active" : ""}
+          >
+           Services
+          </a>
+
+          <a 
+           href="#gallery" 
+           onClick={closeMenu}
+           className={activeSection === "gallery" ? "active" :""}
+          >
+            Gallery
+          </a>
+
+          <a 
+           href="#testimonials" 
+           onClick={closeMenu}
+           className={activeSection === "testimonials" ? "active" :""}
+           >
+            Reviews
+          </a>
+
+          <a href="#booking" 
+          onClick={closeMenu}
+          className={activeSection === "booking" ? "active" : ""}
+          >
+            Book Now
+          </a>
+
+          <a href="#contact" 
+          onClick={closeMenu}
+          className={activeSection === "contact" ? "active" : ""}
+          >
+            Contact
+          </a>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <div className="menu-icon" onClick={toggleMenu}>
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </div>
+      </div>
     </header>
   );
 }
 
 export default Navbar;
+        
