@@ -2,7 +2,7 @@
 
 A modern, responsive, and elegant beauty salon website built with **React.js** for **Khawahish Beauty Makeover**.
 
-🌐 **Live Website:** https://your-vercel-link.vercel.app
+🌐 **Live Website:** https:/khawahish-beauty-makeover/.vercel.app
 
 ---
 
